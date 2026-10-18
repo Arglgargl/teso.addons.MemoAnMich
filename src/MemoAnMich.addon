@@ -6,20 +6,20 @@
 
 ## Title: MemoAnMich
 ## Description: Allows to enter a Memo for another character that pops-up the next time this character is logged in. 
-## Version: 0.0.1
-## AddOnVersion:00001
+## Version: 0.0.2
+## AddOnVersion:00002
 ## Author: Arglgargl
 ## APIVersion: 101051
 ## SavedVariables: MemoAnMich_Data
-## DependsOn: LibSlashCommander
+## DependsOn: LibSlashCommander LibGetText
 
-MemoAnMich.xml
+MemoAnMich_MemoEdit.xml
 MemoAnMich_Init.lua
+MemoAnMich_MemoEdit.lua
 SlashCommand.lua
 SlashCommand_Memo.lua
 SlashCommand_Character.lua
 MemoAnMich_Memo.lua
-MemoAnMich_MemoPopup.lua
 MemoAnMich_Addon.lua
 i18n/en.lua
 i18n/$(language).lua

@@ -1,2 +1,0 @@
-local MAM = MemoAnMich
-

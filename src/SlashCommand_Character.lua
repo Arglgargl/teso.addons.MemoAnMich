@@ -1,7 +1,9 @@
 local MAM = MemoAnMich
 
 if(not MAM.SlashCommand_Character) then MAM.SlashCommand_Character = {} end
+
 local SlashCommand_Character = MAM.SlashCommand_Character
+local MemoEdit = MAM.MemoEdit
 
 function SlashCommand_Character:RegisterForCharacter(mainCmd, toonId, toonName)
 
@@ -26,14 +28,20 @@ function SlashCommand_Character:RegisterForCharacter(mainCmd, toonId, toonName)
   end
 
   cmd.Execute = function(myself,message)
-    -- todo open input dialog
-
-    -- local mam = self.data
-
-    --MAM.OpenPopup(text)
-    MAM.AddMemo(toonId, message)
+    local edit = MemoEdit:New(toonId, message)
+    edit:Open(function(valid, toonId, message) SlashCommand_Character:_AddMemo(valid, toonId, message) end );
   end
 
   cmd:New(mainCmd, MAM):Register()
+
+end
+
+function SlashCommand_Character:_AddMemo(valid, toonId, message)
+
+  if valid then
+    MAM.AddMemo(toonId, message)
+  else
+    d("invalid message")
+  end
 
 end
