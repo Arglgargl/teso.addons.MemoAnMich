@@ -1,0 +1,7 @@
+[B]MemoAnMich[/B]
+
+
+This addon is hosted at [URL="https://www.esoui.com/downloads/fileinfo.php?id=4950]https://www.esoui.com/downloads/fileinfo.php?id=4950[/URL].
+Please post any issues / comments there. 
+
+Please find the source code at [URL="https://github.com/Arglgargl/teso.addons.MemoAnMich"]https://github.com/Arglgargl/teso.addons.MemoAnMich[/URL].
