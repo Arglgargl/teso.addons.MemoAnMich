@@ -1,41 +1,108 @@
 <GuiXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sir.insidi.at/or/schema/esoui.xsd">
   <Controls>
-    <TopLevelControl name="MAM_MemoEdit" hidden="true" movable="true" mouseEnabled="true" resizeHandleSize="5" allowBringToTop="true" clampedToScreen="true">
-      <Dimensions x="400" y="550" />
-      <DimensionConstraints minX="300" minY="350" maxX="1805" maxY="950" />
+    <Control name="MAM_MemoEdit_TooltipTarget" virtual="true" mouseEnabled="true">
+      <OnMouseEnter>
+        ZO_Options_OnMouseEnter(self)
+      </OnMouseEnter>
+      <OnMouseExit>
+        ZO_Options_OnMouseExit(self)
+      </OnMouseExit>
+    </Control>
+    <!-- <Control name="USPF_GeneralTemplate" virtual="true" inherits="USPF_TooltipTarget"> <Dimensions x="400" y="18" /> <Controls> <Texture name="$(parent)Bg" textureFile="EsoUI/Art/Miscellaneous/listItem_backdrop.dds" alpha="0.2"> <AnchorFill /> <TextureCoords left="0" right="1" top="0" bottom=".8125" /> </Texture> <Label name="$(parent)_Source" font="$(MEDIUM_FONT)|14" horizontalAlignment="CENTER" verticalAlignment="CENTER"> <Dimensions x="200" y="18" /> <Anchor point="TOPLEFT" relativeTo="$(parent)" 
+      relativePoint="TOPLEFT" /> </Label> <Label name="$(parent)_Progress" font="$(MEDIUM_FONT)|14" horizontalAlignment="CENTER" verticalAlignment="CENTER"> <Dimensions x="200" y="18" /> <Anchor point="TOPLEFT" relativeTo="$(parent)_Source" relativePoint="TOPRIGHT" offsetX="0" offsetY="0" /> </Label> </Controls> </Control> <Control name="USPF_SQSSTemplate" virtual="true" inherits="USPF_TooltipTarget"> <Dimensions x="300" y="18" /> <Controls> <Texture name="$(parent)Bg" textureFile="EsoUI/Art/Miscellaneous/listItem_backdrop.dds" 
+      alpha="0.2"> <AnchorFill /> <TextureCoords left="0" right="1" top="0" bottom=".8125" /> </Texture> <Label name="$(parent)_Zone" font="$(MEDIUM_FONT)|14" horizontalAlignment="CENTER" verticalAlignment="CENTER"> <Dimensions x="150" y="18" /> <Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" /> </Label> <Label name="$(parent)_Skyshards" font="$(MEDIUM_FONT)|14" horizontalAlignment="CENTER" verticalAlignment="CENTER"> <Dimensions x="75" y="18" /> <Anchor point="TOPRIGHT" relativeTo="$(parent)" 
+      relativePoint="TOPRIGHT" offsetX="0" offsetY="0" /> </Label> <Label name="$(parent)_Quests" font="$(MEDIUM_FONT)|14" horizontalAlignment="CENTER" verticalAlignment="CENTER"> <Dimensions y="18" /> <Anchor point="TOPLEFT" relativeTo="$(parent)_Zone" relativePoint="TOPRIGHT" offsetX="0" offsetY="0" /> <Anchor point="TOPRIGHT" relativeTo="$(parent)_Skyshards" relativePoint="TOPLEFT" offsetX="0" offsetY="0" /> </Label> </Controls> </Control> <Control name="USPF_GDQTemplate" virtual="true" inherits="USPF_TooltipTarget"> 
+      <Dimensions x="350" y="18" /> <Controls> <Texture name="$(parent)Bg" textureFile="EsoUI/Art/Miscellaneous/listItem_backdrop.dds" alpha="0.2"> <AnchorFill /> <TextureCoords left="0" right="1" top="0" bottom=".8125" /> </Texture> <Label name="$(parent)_Zone" font="$(MEDIUM_FONT)|14" horizontalAlignment="CENTER" verticalAlignment="CENTER"> <Dimensions x="125" y="18" /> <Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" /> </Label> <Label name="$(parent)_Progress" font="$(MEDIUM_FONT)|14" 
+      horizontalAlignment="CENTER" verticalAlignment="CENTER"> <Dimensions x="75" y="18" /> <Anchor point="TOPRIGHT" relativeTo="$(parent)" relativePoint="TOPRIGHT" offsetX="0" offsetY="0" /> </Label> <Label name="$(parent)_Dungeon" font="$(MEDIUM_FONT)|14" horizontalAlignment="CENTER" verticalAlignment="CENTER"> <Dimensions y="18" /> <Anchor point="TOPLEFT" relativeTo="$(parent)_Zone" relativePoint="TOPRIGHT" offsetX="0" offsetY="0" /> <Anchor point="TOPRIGHT" relativeTo="$(parent)_Progress" relativePoint="TOPLEFT" 
+      offsetX="0" offsetY="0" /> </Label> </Controls> </Control> <Control name="USPF_PDGBETemplate" virtual="true" inherits="USPF_TooltipTarget"> <Dimensions x="400" y="18" /> <Controls> <Texture name="$(parent)Bg" textureFile="EsoUI/Art/Miscellaneous/listItem_backdrop.dds" alpha="0.2"> <AnchorFill /> <TextureCoords left="0" right="1" top="0" bottom=".8125" /> </Texture> <Label name="$(parent)_Zone" font="$(MEDIUM_FONT)|14" horizontalAlignment="CENTER" verticalAlignment="CENTER"> <Dimensions x="140" y="18" 
+      /> <Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" /> </Label> <Label name="$(parent)_Progress" font="$(MEDIUM_FONT)|14" horizontalAlignment="CENTER" verticalAlignment="CENTER"> <Dimensions x="75" y="18" /> <Anchor point="TOPRIGHT" relativeTo="$(parent)" relativePoint="TOPRIGHT" offsetX="0" offsetY="0" /> </Label> <Label name="$(parent)_Dungeon" font="$(MEDIUM_FONT)|14" horizontalAlignment="CENTER" verticalAlignment="CENTER"> <Dimensions y="18" /> <Anchor point="TOPLEFT" relativeTo="$(parent)_Zone" 
+      relativePoint="TOPRIGHT" offsetX="0" offsetY="0" /> <Anchor point="TOPRIGHT" relativeTo="$(parent)_Progress" relativePoint="TOPLEFT" offsetX="0" offsetY="0" /> </Label> </Controls> </Control> <Control name="USPF_ListSeparator" virtual="true"> <Controls> <Line name="$(parent)_Line" color="FFCCCCCC" thickness="2" pixelRoundingEnabled="true"> <Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" offsetX="3" offsetY="0" /> <Anchor point="TOPRIGHT" relativeTo="$(parent)" relativePoint="TOPRIGHT" 
+      offsetX="-5" offsetY="0" /> </Line> </Controls> </Control> -->
 
-      <!-- Positive LT/Negative RB offsets allow sliding past edge of screen. Negative LT/Positive RB offsets inset from edge of screen. Neither affect resize. Grr. -->
-      <!-- 
-      <ClampedToScreenInsets left="20" top="20" right="20" bottom="20" />
-       -->
+    <TopLevelControl name="MAM_MemoEdit_Dialog" mouseEnabled="true" movable="true" hidden="true" allowBringToTop="true" tier="HIGH">
+      <Dimensions x="1390" y="750" />
+      <Anchor point="CENTER" relativeTo="GuiRoot" relativePoint="CENTER" offsetX="0" offsetY="0" />
 
       <Controls>
-        <Backdrop name="$(parent)BG" inherits="ZO_DefaultBackdrop" />
+        <Backdrop name="$(parent)_BG" inherits="ZO_DefaultBackdrop" centerColor="FFFFFFFF" />
 
-        <Label name="$(parent)WindowTitle" text="MemoAnMich" font="ZoFontWindowTitle" color="CFDCBD" wrapMode="ELLIPSIS" verticalAlignment="TOP">
-          <Anchor relativeTo="$(parent)" relativePoint="TOPLEFT" point="TOPLEFT" offsetX="5" offsetY="5" />
-        </Label>
-
-        <Button name="$(parent)Close" alpha="1">
-          <Textures normal="EsoUI/Art/Buttons/closeButton_up.dds" pressed="EsoUI/Art/Buttons/closeButton_down.dds" mouseOver="EsoUI/Art/Buttons/closeButton_mouseOver.dds" disabled="EsoUI/Art/Buttons/closeButton_disabled.dds" />
-          <Anchor relativeTo="$(parent)" relativePoint="TOPRIGHT" point="TOPRIGHT" offsetX="0" offsetY="0" />
-          <Dimensions x="20" y="20" />
-          <TextureCoords left="0" top="0" right="0.625" bottom="0.625" />
-          <OnClicked>
-            MemoAnMich.MemoEdit.CloseCurrent()
-          </OnClicked>
-        </Button>
-<!-- 
-        <Backdrop name="$(parent)TextFieldBackdrop">
-          <Anchor relativeTo="$(parent)" relativePoint="TOPLEFT" point="TOPLEFT" offsetX="5" offsetY="50" />
-          <Anchor relativeTo="$(parent)" relativePoint="BOTTOMRIGHT" point="BOTTOMRIGHT" offsetX="-5" offsetY="-5" />
+        <Control name="$(parent)_Header" hidden="false" resizeToFitConstrains="X">
+          <Dimensions y="30" />
+          <Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" offsetX="0" offsetY="0" />
+          <Anchor point="TOPRIGHT" relativeTo="$(parent)" relativePoint="TOPRIGHT" offsetX="0" offsetY="0" />
 
           <Controls>
-            <EditBox name="$(parent)TextField"></EditBox>
+            <Button name="$(parent)_Hide">
+              <Anchor point="TOPRIGHT" relativeTo="$(parent)" relativePoint="TOPRIGHT" offsetX="-3" offsetY="3" />
+              <OnMouseUp>MemoAnMich.MemoEdit:ToggleWindow()</OnMouseUp>
+              <Dimensions x="25" y="25" />
+              <Textures normal="/esoui/art/buttons/decline_up.dds" pressed="/esoui/art/buttons/decline_down.dds" mouseOver="/esoui/art/buttons/decline_over.dds" />
+            </Button>
+            <Label name="$(parent)_Title" font="$(ANTIQUE_FONT)|30" text="MAM_MEMOEDIT_DIALOG_TITLE" horizontalAlignment="CENTER" verticalAlignment="CENTER">
+              <Dimensions y="30" />
+              <Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" offsetX="0" offsetY="0" />
+              <Anchor point="TOPRIGHT" relativeTo="$(parent)" relativePoint="TOPRIGHT" offsetX="0" offsetY="0" />
+            </Label>
+            <Control name="$(parent)_CharList" inherits="ZO_ComboBox MAM_MemoEdit_TooltipTarget" tier="HIGH">
+              <Dimensions x="250" y="25" />
+              <Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" offsetX="6" offsetY="6" />
+            </Control>
           </Controls>
+        </Control>
 
-        </Backdrop>
+        <Control name="$(parent)_Body" hidden="false" resizeToFitDescendents="true">
+          <Anchor point="TOPLEFT" relativeTo="$(parent)_Header" relativePoint="BOTTOMLEFT" offsetX="2" offsetY="12" />
+          <Anchor point="TOPRIGHT" relativeTo="$(parent)_Header" relativePoint="BOTTOMRIGHT" offsetX="0" offsetY="12" />
+
+          <Controls>
+            <Label name="$(parent)_TextBox_Label" font="$(ANTIQUE_FONT)|16" text="MAM_TEXTBOX" horizontalAlignment="CENTER" verticalAlignment="BOTTOM">
+              <Dimensions x="400" y="24" />
+              <Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" offsetX="0" offsetY="3" />
+            </Label>
+
+<!-- resizeToFitConstrains="X"
+resizeToFitDescendents="true"
+excludeFromResizeToFitExtents
  -->
+
+            <Backdrop name="$(parent)_BD" tier="HIGH" inherits="ZO_EditBackdrop">
+              <Anchor point="TOPLEFT" relativeTo="$(parent)_TextBox_Label" relativePoint="BOTTOMLEFT" offsetX="0" offsetY="0" />
+              <Anchor point="TOPRIGHT" relativeTo="$(parent)_TextBox_Label" relativePoint="BOTTOMRIGHT" offsetX="16" offsetY="0" />
+              <Dimensions x="250" y="200"/>
+              <Controls>
+                <EditBox name="$(grandparent)_TextBox_Control" inherits="ZO_DefaultEditMultiLineForBackdrop ZO_EditDefaultText" />
+              </Controls>
+            </Backdrop>
+
+          </Controls>
+        </Control>
+
+        <Control name="$(parent)_Footer" hidden="false" resizeToFitConstrains="X">
+          <Dimensions y="30" />
+          <Anchor point="BOTTOMLEFT" relativeTo="$(parent)" relativePoint="BOTTOMLEFT" offsetX="0" offsetY="0" />
+          <Anchor point="BOTTOMRIGHT" relativeTo="$(parent)" relativePoint="BOTTOMRIGHT" offsetX="0" offsetY="0" />
+
+          <Controls>
+            <Button name="$(parent)_Close" text="Close">
+              <Anchor point="TOPRIGHT" relativeTo="$(parent)" relativePoint="TOPRIGHT" offsetX="-3" offsetY="3" />
+              <OnMouseUp>MemoAnMich.MemoEdit:ToggleWindow()</OnMouseUp>
+              <Dimensions x="25" y="25" />
+              <Textures normal="/esoui/art/buttons/decline_up.dds" pressed="/esoui/art/buttons/decline_down.dds" mouseOver="/esoui/art/buttons/decline_over.dds" />
+            </Button>
+            <Button name="$(parent)_Cancel" text="Cancel">
+              <Anchor point="TOPRIGHT" relativeTo="$(parent)" relativePoint="TOPRIGHT" offsetX="-3" offsetY="3" />
+              <!-- 
+              <OnMouseUp>MemoAnMich.MemoEdit:ToggleWindow()</OnMouseUp>
+               -->
+               <!-- 
+              <Dimensions x="25" y="25" />
+              <Textures normal="/esoui/art/buttons/decline_up.dds" pressed="/esoui/art/buttons/decline_down.dds" mouseOver="/esoui/art/buttons/decline_over.dds" />
+                -->
+                
+            </Button>
+          </Controls>
+        </Control>
+
 
       </Controls>
     </TopLevelControl>
