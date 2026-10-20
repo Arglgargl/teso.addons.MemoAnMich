@@ -1,4 +1,5 @@
 local MAM = MemoAnMich
+local MemoEdit = MAM.MemoEdit
 
 -- Constant
 local SLASH_MAM = "/mam"
@@ -15,9 +16,8 @@ end
 
 function MAM.RegisterSlashCommands()
 
-  local mainCmd = LibSlashCommander:Register( SLASH_MAM , function(args) MAM.OpenPopup("Please select a sub-command") end
-            , "MemoAnMich")
-
+  local mainCmd = LibSlashCommander:Register( SLASH_MAM , function(args) MemoEdit.Open( nil, "" ) end, "MemoAnMich")
+            
   local toonIndex = MAM.savedVars.toonIndex
 
   for toonId, toonName in pairs(toonIndex) do

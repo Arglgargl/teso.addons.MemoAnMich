@@ -8,7 +8,7 @@ end
 
 local MemoEdit = MAM.MemoEdit
 
-function MemoEdit.Open(toonId, message, callback)
+function MemoEdit.Open(toonId, message)
 
   if MemoEdit.active then
     d("dialog active")
@@ -17,36 +17,52 @@ function MemoEdit.Open(toonId, message, callback)
   
   MemoEdit.selectedToon = toonId
   MemoEdit.message  = message
-  MemoEdit.closeCallback = callback
 
   local toonIndex = MAM.savedVars.toonIndex
 
   -- select toon  
   local charlist = MemoEdit.CreateCharList()
-  charlist:SetSelectedItem(toonIndex[toonId])
+  
+  if toonId then
+    charlist:SetSelectedItem(toonIndex[toonId])
+  else
+    local firstId, firstName = next(toonIndex)
+    charlist:SetSelectedItem(firstName)
+  end
   
   -- set text
   local textbox = MemoEdit.CreateTextBox()
   textbox:SetText(message)
 
   MemoEdit.ToggleWindow()
+  
+  textbox:TakeFocus()
 
 end
 
 function MemoEdit.ToggleWindow()
-  MemoEdit.active = not MemoEdit.active
-  
   SCENE_MANAGER:ToggleTopLevel(MAM_MemoEdit_Dialog)
 
-  if MemoEdit.active then
-  else
-    local message = MAM_MemoEdit_Dialog_Body_TextBox_Control:GetText()
-    MemoEdit.message = message
-    local isValid = message and string.len(message) > 0
-    MemoEdit.closeCallback( isValid, MemoEdit.selectedToon, MemoEdit.message )
-  end
-
 end
+
+function MemoEdit.WindowOK()
+  MemoEdit.ToggleWindow()
+  
+  local message = MAM_MemoEdit_Dialog_Body_TextBox_Control:GetText()
+  MemoEdit.message = message
+  local isValid = MemoEdit.selectedToon and message and string.len(message) > 0
+  
+  if isValid then
+    MAM.AddMemo(MemoEdit.selectedToon, MemoEdit.message)
+  else
+    d("invalid message")
+  end
+end
+
+function MemoEdit.WindowCancel()
+  MemoEdit.ToggleWindow()
+end
+
 
 function MemoEdit.CreateCharList()
 

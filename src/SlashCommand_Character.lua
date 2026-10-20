@@ -28,21 +28,9 @@ function SlashCommand_Character:RegisterForCharacter(mainCmd, toonId, toonName)
   end
 
   cmd.Execute = function(myself,message)
-    --local edit = MemoEdit:New(toonId, message)
-    --edit:Open(function(valid, toonId, message) SlashCommand_Character:_AddMemo(valid, toonId, message) end );
-    MemoEdit.Open( toonId, message, function(valid, toonId, message) SlashCommand_Character:_AddMemo(valid, toonId, message) end );
+    MemoEdit.Open( toonId, message );
   end
 
   cmd:New(mainCmd, MAM):Register()
-
-end
-
-function SlashCommand_Character:_AddMemo(valid, toonId, message)
-
-  if valid then
-    MAM.AddMemo(toonId, message)
-  else
-    d("invalid message")
-  end
 
 end
